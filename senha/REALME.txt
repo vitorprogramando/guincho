@@ -1,0 +1,6 @@
+Relatorio de sistema de senha localhostphp 
+primeiro: guincho
+segundo: senhas
+terceiro: id/int/primary/autoincrement
+numero_senha/int
+

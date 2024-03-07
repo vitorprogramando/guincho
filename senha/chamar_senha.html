@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chamar Senha</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Chamar Próxima Senha</h1>
+    <button id="chamarBtn">Chamar Senha</button>
+    <div id="senhaChamada"></div>
+
+    <script src="script.js"></script>
+    <style>
+        /* Estilo para o corpo da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo para os títulos das páginas */
+h1, h2 {
+    color: #333;
+}
+
+/* Estilo para os botões */
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo para as divs de conteúdo */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para a lista de senhas chamadas */
+#ultimasSenhas {
+    margin-top: 20px;
+}
+
+#ultimasSenhas ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#ultimasSenhas ul li {
+    padding: 5px 0;
+}
+
+/* Estilo para a div de senha chamada */
+#senhaChamada {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+    </style>
+    <script>
+        // Função para chamar a senha
+function chamarSenha() {
+    fetch('chamar_senha.php')
+    .then(response => response.text())
+    .then(data => {
+        if (data !== 'Não há senhas na fila') {
+            document.getElementById("senhaChamada").innerHTML = "Senha chamada: " + data;
+        } else {
+            document.getElementById("senhaChamada").innerHTML = data;
+        }
+    })
+    .catch(error => console.error('Erro ao chamar a senha:', error));
+}
+
+// Event listener para o botão de chamar senha
+document.getElementById("chamarBtn").addEventListener("click", chamarSenha);
+    </script>
+</body>
+</html>
